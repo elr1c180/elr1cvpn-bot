@@ -7,4 +7,4 @@ router = APIRouter(prefix="/users", tags=['users'])
 @router.get("/get_users")
 async def get_users():
     users = await get_users_service()
-    return users
+    return {"users": users, "count": len(users)}
