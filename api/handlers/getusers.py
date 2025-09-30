@@ -1,9 +1,10 @@
 from fastapi import APIRouter
+from service.database import get_users as get_users_service
 
 
 router = APIRouter(prefix="/users", tags=['users'])
 
-
 @router.get("/get_users")
 async def get_users():
-    return {"users": ["user1", "user2", "user3"]}
+    users = await get_users_service()
+    return users

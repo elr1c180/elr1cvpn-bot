@@ -4,7 +4,7 @@ from aiogram.types import Message, ReplyKeyboardRemove, CallbackQuery
 
 from kb import start
 
-from models import init_db, async_session, User
+from common.models import init_db, async_session, User
 from sqlalchemy import select
 
 router = Router() 

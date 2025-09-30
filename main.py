@@ -18,7 +18,7 @@ from aiogram import Router, F
 from aiogram.filters import Command
 from aiogram.types import Message, ReplyKeyboardRemove, CallbackQuery
 
-from models import init_db
+from common.models import init_db
 
 BOT_TOKEN = returnToken()
 
@@ -36,7 +36,6 @@ async def main():
 
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
-
 
 # bot = Bot(token=BOT_TOKEN)
 # dp = Dispatcher()
