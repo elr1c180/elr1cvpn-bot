@@ -16,6 +16,6 @@ async def add_user(chat_id: int, username: str):
     return user
 
 @router.get("/broadcast")
-async def broadcast(chat_id: int, text: str):
-    msg = broadcast_func(chat_id=chat_id, text=text)
+async def broadcast_endpoint(chat_id: int, text: str):
+    msg = await broadcast_func(chat_id=chat_id, text=text)
     return {"status": msg}
