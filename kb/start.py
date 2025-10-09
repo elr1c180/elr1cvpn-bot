@@ -5,6 +5,13 @@ comm = InlineKeyboardBuilder()
 
 comm.add(
     types.InlineKeyboardButton(
+        text='Профиль 👤',
+        callback_data='profile'
+    )
+)
+
+comm.add(
+    types.InlineKeyboardButton(
         text='Тарифы',
         callback_data="rates"
     )
@@ -16,6 +23,7 @@ comm.add(
         url="https://t.me/elr1cs_work"
     )
 )
+
 comm.add(
     types.InlineKeyboardButton(
         text="Инструкция по установке",
@@ -28,7 +36,6 @@ comm.add(
         url='https://t.me/elesinanton'
     )
 )
-
 
 comm.add(
     types.InlineKeyboardButton(

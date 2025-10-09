@@ -1,4 +1,4 @@
-from common.models import async_session, User
+from common.models import async_session, User, Tariff
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 
@@ -19,6 +19,24 @@ async def add_user(chat_id: int, username: str):
         except IntegrityError as e:
             await session.rollback()
             return {"status": "error", "message": "User alredy exist"}
+        
+        except Exception as e:
+            await session.rollback()
+            return {"status": "error", "message": str(e)}
+
+async def get_tariffs_service():
+    async with async_session() as session:
+        result = await session.execute(select(Tariff))
+        tariffs = result.scalars().all()
+        return tariffs
+
+async def add_tariff_service(name: str, price: int):
+    async with async_session() as session:
+        try:
+            tariff = Tariff(name=name, price=price)
+            session.add(tariff)
+            await session.commit()
+            return {"status": "success", "tariff": {"name": name, "price": price}}
         
         except Exception as e:
             await session.rollback()

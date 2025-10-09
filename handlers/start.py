@@ -21,6 +21,9 @@ async def cmd_start(message: Message, command: CommandObject):
     )
 
     telegram_id = message.from_user.id
+    first_name = message.from_user.first_name or ""
+    last_name = message.from_user.last_name or ""
+    name = f"{first_name} {last_name}".strip() or None
     username = message.from_user.username
 
     async with async_session() as session:
@@ -28,7 +31,7 @@ async def cmd_start(message: Message, command: CommandObject):
         user = result.scalar_one_or_none()
 
         if not user:
-            new_user = User(chat_id=telegram_id, username=username)
+            new_user = User(chat_id=telegram_id, username=username, name=name)
             session.add(new_user)
             await session.commit()
         else:

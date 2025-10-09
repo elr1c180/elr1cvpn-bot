@@ -4,7 +4,7 @@ from aiogram import Bot, Dispatcher, types
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import JSONResponse
 from contextlib import asynccontextmanager
-from handlers import start, support, rates, ref
+from handlers import start, support, rates, ref, profile
 
 from kb.rates import webapp
 from kb.back import back
@@ -30,7 +30,7 @@ async def main():
     bot = Bot(token=BOT_TOKEN)
     dp = Dispatcher()
 
-    dp.include_routers(start.router, support.router, rates.router, ref.router)
+    dp.include_routers(start.router, support.router, rates.router, ref.router, profile.router)
 
     await init_db()
 
