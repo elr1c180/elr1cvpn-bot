@@ -1,6 +1,6 @@
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker, declarative_base
-from sqlalchemy import Column, Integer, BigInteger, String
+from sqlalchemy import Column, Integer, BigInteger, String, DateTime, Boolean, ForeignKey
 
 import os
 
@@ -12,6 +12,16 @@ class User(Base):
     __tablename__ = "users"
     username = Column(String, index=True)
     chat_id = Column(BigInteger, primary_key=True, unique=True, index=True)
+    tariff = Column(Integer, ForeignKey("Tariff.id"))
+    name = Column(String)
+    autopay = Column(Boolean, default=False)
+    expire_date = Column(DateTime)
+
+class Tariff(Base):
+    __tablename__ = "Tariff"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
+    price = Column(Integer)
 
 engine = create_async_engine(DATABASE_URL, echo=True)
 
