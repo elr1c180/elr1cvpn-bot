@@ -10,7 +10,7 @@ load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '../../.env'))
 
 from models import Base
 
-DATABASE_URL = os.getenv("DATABASE_URL_LOCAL")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 config = context.config
 
