@@ -3,12 +3,12 @@ from aiogram import types
 
 comm = InlineKeyboardBuilder()
 
-comm.add(
-    types.InlineKeyboardButton(
-        text='Профиль 👤',
-        callback_data='profile'
-    )
-)
+# comm.add(
+#     types.InlineKeyboardButton(
+#         text='Профиль 👤',
+#         callback_data='profile'
+#     )
+# )
 
 comm.add(
     types.InlineKeyboardButton(
